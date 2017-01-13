@@ -2,14 +2,14 @@
 ==== Spring Boot Adapter
 
 To be able to secure Spring Boot apps you must add the Keycloak Spring Boot adapter JAR to your app.
-You then have to provide some extra configuration via normal Spring Boot configuration (`application.properties`).  Let's go over these steps. 
+You then have to provide some extra configuration via normal Spring Boot configuration (`application.properties`).  Let's go over these steps.
 
 [[_spring_boot_adapter_installation]]
 ===== Adapter Installation
 
 The Keycloak Spring Boot adapter takes advantage of Spring Boot's autoconfiguration so all you need to do is add the Keycloak Spring Boot adapter JAR to your project.
 Depending on what container you are using with Spring Boot, you also need to add the appropriate Keycloak container adapter.
-If you are using Maven, add the following to your pom.xml (using Tomcat as an example): 
+If you are using Maven, add the following to your pom.xml (using Tomcat as an example):
 
 
 [source,xml,subs="attributes+"]
@@ -26,15 +26,15 @@ If you are using Maven, add the following to your pom.xml (using Tomcat as an ex
     <artifactId>keycloak-tomcat8-adapter</artifactId>
     <version>{{book.project.versionMvn}}</version>
 </dependency>
-----        
+----
 
 [[_spring_boot_adapter_configuration]]
 ===== Required Spring Boot Adapter Configuration
 
-This section describes how to configure your Spring Boot app to use Keycloak. 
+This section describes how to configure your Spring Boot app to use Keycloak.
 
 Instead of a `keycloak.json` file, you configure the realm for the Spring Boot Keycloak adapter via the normal Spring Boot configuration.
-For example: 
+For example:
 
 [source]
 ----
@@ -60,7 +60,7 @@ keycloak.securityConstraints[0].securityCollections[0].authRoles[0] = admin
 keycloak.securityConstraints[0].securityCollections[0].authRoles[1] = user
 keycloak.securityConstraints[0].securityCollections[0].patterns[0] = /insecure
 
-keycloak.securityConstraints[0].securityCollections[1].name = admin stuff
-keycloak.securityConstraints[0].securityCollections[1].authRoles[0] = admin
-keycloak.securityConstraints[0].securityCollections[1].patterns[0] = /admin
+keycloak.securityConstraints[1].securityCollections[0].name = admin stuff
+keycloak.securityConstraints[1].securityCollections[0].authRoles[0] = admin
+keycloak.securityConstraints[1].securityCollections[0].patterns[0] = /admin
 ----
